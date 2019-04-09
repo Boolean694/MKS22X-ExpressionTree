@@ -32,7 +32,6 @@ public class Calculator {
         dq.addLast(Double.parseDouble(chli[q]));
       }
     }
-    System.out.println(dq.getLast());
     return dq.getLast();
   }
   public static void main(String[] afaf) {

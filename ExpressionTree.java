@@ -9,7 +9,7 @@ public class ExpressionTree{
       return "" + getValue();
     }
     else {
-      return "" + getLeft().toString() + getOp() + getRight().toString();
+      return "" + getLeft().toString() + " " + getOp() + " " + getRight().toString();
     }
   }
 
@@ -18,7 +18,7 @@ public class ExpressionTree{
   private String toStringPostfix() {
     if(isValue()) {return "" + getValue();}
     else {
-      return "" + getLeft().toStringPostfix() + getRight().toStringPostfix() + getOp();
+      return "" + getLeft().toStringPostfix() + " " + getRight().toStringPostfix() + " " + getOp();
     }
   }
 
@@ -28,19 +28,22 @@ public class ExpressionTree{
   public String toStringPrefix() {
     if(isValue()) {return "" + getValue();}
     else {
-      return "" + getOp() + getLeft().toStringPrefix() + getRight().toStringPrefix();
+      return "" + getOp() + " " + getLeft().toStringPrefix() + " " + getRight().toStringPrefix();
     }
   }
 
   /*return the value of the specified expression tree*/
   public double evaluate(){
     /*you are to write this method*/
-    return 0.0;
+    return Calculator.eval(toStringPostfix());
     }
 
   /*use the correct operator on both a and b, and return that value*/
   private double apply(char op, double a, double b){
-    /*you are to write this method*/
+    if(op == '+') {return a + b;}
+    if(op == '-') {return a - b;}
+    if(op == '*') {return a * b;}
+    if(op == '/') {return a / b;}
     return 0.0;
     }
 
