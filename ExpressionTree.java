@@ -5,32 +5,30 @@ public class ExpressionTree{
   /*return the expression as an infix notation string with parenthesis*/
   /* The sample tree would be: "(3 + (2 * 10))"     */
   public String toString(){
-    /*you are to write this method*/
-    return "";
+    if(isValue()) {
+      return "" + getValue();
+    }
+    else {
+      return "" + getLeft().toString() + getOp() + getRight().toString();
+    }
   }
 
   /*return the expression as a postfix notation string without parenthesis*/
   /* The sample tree would be: "3 2 10 * +"     */
-  public String toStringPostfix(){
-    return pof(this, "");
-  }
-  private String pof(ExpressionTree et, String s) {
-    if(!et.isOp()) {return s + et.getValue();}
+  private String toStringPostfix() {
+    if(isValue()) {return "" + getValue();}
     else {
-      return s + pof(et.getLeft) + pof(et.getRight) + et.getOp();
+      return "" + getLeft().toStringPostfix() + getRight().toStringPostfix() + getOp();
     }
   }
 
   /*return the expression as a prefix notation string without parenthesis*/
   /* The sample tree would be: "+ 3 * 2 10"     */
 
-  public String toStringPrefix(){
-    return pref(this, "");
-  }
-  private String pref(ExpressionTree et, String s) {
-    if(!et.isOp()) {return s + et.getValue();}
+  public String toStringPrefix() {
+    if(isValue()) {return "" + getValue();}
     else {
-      return s + et.getOp() + pref(et.getLeft()) + pref(et.getRight());
+      return "" + getOp() + getLeft().toStringPrefix() + getRight().toStringPrefix();
     }
   }
 
